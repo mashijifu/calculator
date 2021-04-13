@@ -13,12 +13,12 @@
             <?php
 
                 //ACを押したら
-                if($_POST["ac"] === "AC"){
+                if(isset($_POST["ac"])){
                     $set = 0;
                 }
 
                 //%を押したら
-                if($_POST["per"] === "%"){
+                if(isset($_POST["per"])){
 
                     //1つ目の数字
                     // if($_POST["first"]){
@@ -35,11 +35,13 @@
                     // echo "<input type='number' value='".$set."' >";
                 }
 
-                if($_POST["plm"] === "+/-"){
+                //+/-を押したら
+                if(isset($_POST["plm"])){
                     $set = -$set;
+                    // echo "<input type='text' value='$set' name='second'>";
                     // echo "<input type='number' value='".$set."' >";
                 }
-
+                
                 //=を押したら
                 if(isset($_POST["result"])) {
                     //足し算
@@ -65,6 +67,7 @@
                         $set = $_POST["first"] / $_POST["second"];
                         echo "<input type='text' value='$set' name='second'>";
                     }
+
                 }else{
                     //記号押されたら(+,-,*,/)
                     if(isset($_POST["symbol"])){
@@ -87,13 +90,13 @@
                         }
                     }else{ // 2回連続で数字が押された
                         // もし「数字」が押されたら
-                        if (isset($_POST ["number"])) {
+                        if (isset($_POST["number"])) {
 
                             // 1つ目の後者の数字がセットされたら
-                            if (isset($_POST ["second"])){
+                            if (isset($_POST["second"])){
 
                                 // 1回目にセットした数字＋2回目にセットした数字を合わせる
-                                $set = $_POST ["second"] . $_POST ["number"] ;
+                                $set = $_POST["second"] . $_POST["number"];
 
                                 // 1の後に1を押したら11になる、それをセットする
                                 echo "<input type='text' value='$set' name='second'>";
@@ -107,6 +110,7 @@
                     }
             
                 }
+
             ?>
             <div class="screen">
 
